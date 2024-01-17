@@ -134,8 +134,9 @@ class db:
         schema = "./JSONdb/database/" + schemaName + ".json"
         bs = createSchema(baseplate)
         try:
+            if os.path.isdir('./JSONdb/database') is False:
+                os.mkdir('./JSONdb/database')
             open(schema, "x")
-        except:
-            return "Already Exists"
+        except any:
+            return "Already Exists or Error"
         return saveData(None, 'baseplate', dict({'baseplate':bs}), schema)
-        
