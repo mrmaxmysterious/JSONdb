@@ -10,6 +10,11 @@ But also, make sure this is in a folder called `JSONdb` otherwise nothing will w
  # Exemplars:
 
 ```py
+import JSONdb
+
+db = JSONdb.db("schema name")
+# If you are creating a new schema, DO NOT PUT ANY SCHEMA NAME IN THERE!
+
 db.createId()
 # Creates a unique ID.
 
