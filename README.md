@@ -27,11 +27,17 @@ db.findBy(name, value)
 db.findById(id)
 # More specific. If you know the very long Id of the document, use that here to find the document.
 
+db.findByName(documentName)
+# Find a document by the name you supplied when you inserted it.
+
 db.countDocuments()
 # Counts all documents in the JSON db.
 
 db.insert(documentName, dictionary)
 # This is how you put things in the JSON db. You put in a document name, and then you can put in what you want to input as a DICTIONARY to the db. IT MUST USE THE CORRECT TEMPLATE AS PER THE SCHEMA BASEPLATE!
+
+db.remove(documentName)
+# Remove a document in the schema.
 
 db.createSchema(schemaName, baseplate)
 # This is how you create new schemas (JSON files). You put in a document name so you can actually use the db, and then the baseplate HAS TO USE THE FOLLOWING SORT OF TEMPLATE:
