@@ -12,6 +12,16 @@ def createId(sch):
     return hash
 
 def saveData(sch, docName, data, fileDir):
+    if type(data) is not dict and data == "del":
+        file = ""
+        with open(fileDir, "r+") as e:
+            file = json.load(e)
+            file = json.dumps(file)
+            file = json.loads(file)
+        del file[docName]
+        with open(fileDir, "w") as j:
+            json.dump(file, j)
+        return True
     if data.get('baseplate') is not None:
         with open(fileDir, "w") as j:
             json.dump(data, j)
@@ -78,6 +88,11 @@ def filterOut(s, name, val):
             filtered.append(s[item])
     return filtered
 
+def findByName(s, name):
+    for item in s:
+        if item == name:
+            return s[item]
+
 def createSchema(baseplate):
     if type(baseplate) is not dict:
         return False
@@ -116,6 +131,11 @@ class db:
             return "Not Allowed"
         data = openDB(self.schema)
         return filterOut(data, 'JSONdbId', id)
+
+    def findByName(self, name):
+        if self.schema == "ns":
+            return "Not Allowed"
+        return findByName(openDB(self.schema), name)
     
     def countDocuments(self):
         if self.schema == "ns":
@@ -127,6 +147,11 @@ class db:
         if self.schema == "ns":
             return "Not Allowed"
         return saveData(openDB(self.schema), docName, arr, self.schema)
+
+    def remove(self, docName):
+        if self.schema == "ns":
+            return "Not Allowed"
+        return saveData(openDB(self.schema), docName, "del", self.schema)
 
     def createSchema(self, schemaName, baseplate):
         if self.schema != "ns":
