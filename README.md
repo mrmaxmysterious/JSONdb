@@ -4,7 +4,7 @@ So, I'm sure you once needed a module so desperately to create a database, but w
 
 Check the example file if you don't know what to do.
 
-**DO NOT PUT THIS IN ANY DIRECTORIES APART FROM THE MAIN ONE!!!!!! This needs to be in your main folder, not in src/JSONdb.** Ya get what I mean blud?!!!?!!?1111
+**This needs to be in your root directory, not in src/JSONdb. If it is, you need to be more specific when importing the module.** Ya get what I mean blud?!!!?!!?1111
 But also, make sure this is in a folder called `JSONdb` otherwise nothing will work.
 
  # Exemplars:
